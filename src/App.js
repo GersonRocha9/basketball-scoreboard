@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
 
 function App() {
+  // React Hooks - useState: define uma variável reativa
+  const [pointsA, setPointsA] = useState(0);
+  const [pointsB, setPointsB] = useState(0);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>Placar</h1>
+
+      <div className="team-container">
+        <h3> Time A: {pointsA} </h3>
+        <button onClick={() => setPointsA(pointsA + 2)}>2 Pontos</button>
+        <button onClick={() => setPointsA(pointsA + 3)}>3 Pontos</button>
+      </div>
+
+      <div className="team-container">
+        <h3> Time B: {pointsB} </h3>
+        <button onClick={() => setPointsB(pointsB + 2)}>2 Pontos</button>
+        <button onClick={() => setPointsB(pointsB + 3)}>3 Pontos</button>
+      </div>
+
+      <div className="final-score">
+        {/* Operador Ternário verificando quem está ganhando/ganhou */}
+        <h3>{pointsA > pointsB ? "Time A venceu" : pointsB > pointsA ? "Time B venceu" : "Empate"}</h3>
+      </div>
+    </>
   );
 }
 
